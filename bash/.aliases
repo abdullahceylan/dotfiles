@@ -1,0 +1,110 @@
+# Shortcuts
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# some ls aliases
+alias la="ls -A"
+alias ll="ls -Al"
+
+# npm script shortcuts
+alias yn="yarn"
+alias yt="yarn test"
+alias ytw="yarn test:watch -u"
+alias ytwc="yarn test:watch -u --coverage"
+alias yb="yarn build"
+alias yd="yarn dev"
+
+# list directory tree - level 3 - ignore node_modules etc.
+alias show-dir="tree -L 3 -a -I 'node_modules|dist|.git'"
+
+alias godev='cd ~/Documents/development'
+alias ck.next='cd ~/Documents/development/wtc-developments/ecom-ck'
+alias ck.components='cd ~/Documents/development/wtc-developments/ck-component-library'
+alias ck.translation='cd ~/Documents/development/wtc-developments/stores/pvh-node-modules/translation-loader'
+alias a.project='cd ~/Documents/development/ac-projects'
+alias a.contributions='cd ~/Documents/development/ac-contributions'
+alias a.mobile='cd ~/Documents/development/ac-mobile'
+alias a.clone='cd ~/Documents/development/ac-clone'
+
+# Search history
+alias hgrep='history | grep'
+
+# Git aliases
+alias g.s='git status'
+alias g.a='git add -A .'
+alias g.c='git commit'
+alias g.co='git checkout'
+alias g.cob='git checkout -b'
+alias g.cp="git cherry-pick"
+alias g.bg="git bisect good"
+alias g.bb="git bisect bad"
+alias g.p='git push'
+alias g.po='git push origin'
+alias g.pom='git push origin master'
+alias g.pod='git push origin develop'
+alias g.d='git diff'
+alias g.f='git fetch'
+alias g.pull='git pull'
+alias g.r='git reset'
+alias g.rb='git rebase'
+alias g.rbc='git rebase --continue'
+alias g.rba='git rebase --abort'
+alias g.fp='git fetch && git pull'
+alias g.cl='git clone'
+alias gfgrb='git fetch && git rebase -i origin/dev'
+alias gfgrbm='git fetch && git rebase -i origin/master'
+alias gfgrbd='git fetch && git rebase -i origin/develop'
+alias g.l='git log --oneline --decorate'
+alias g.lg="git log --graph --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset %C(yellow)%ad%Creset' --abbrev-commit --date=short"
+alias g.lp="git log --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset %C(yellow)%ad%Creset' --abbrev-commit --date=short"
+alias g.lr="git log --reverse --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset %C(yellow)%ad%Creset' --abbrev-commit --date=short"
+
+alias g.lc='git log --oneline --decorate | pbcopy && echo "`pbpaste` (copied to clipboard)"'
+alias g.lh='git log --pretty=format:%H -1 | pbcopy && echo "`pbpaste` (copied to clipboard)"'
+
+# npm shortcuts that only list top-level modules
+alias l="yarn list --depth=0 2>/dev/null"
+alias lg="npm list -g --depth=0 2>/dev/null"
+
+# Enhanced WHOIS lookups
+alias whois="whois -h whois-servers.net"
+
+# IP addresses
+alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
+
+# Flush Directory Service cache
+alias flush="dscacheutil -flushcache"
+
+# View HTTP traffic
+alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+# URL-encode strings
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+
+# One of @janmoesen’s ProTip™s
+for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+	alias "$method"="lwp-request -m '$method'"
+done
+
+# Empty trash
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
+
+# Mute and unmute
+alias mute="osascript -e 'set volume with output muted'"
+alias unmute="osascript -e 'set volume with output unmuted'"
+
+# Network utils
+alias network.ports='netstat -a -n | grep -i "LISTEN "'
+alias network.connections='lsof -l -i +L -R -V'
+alias network.established='lsof -l -i +L -R -V | grep ESTABLISHED'
+
+#Headless Google Chrome
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+
+# recursively delete .DS_Store
+alias d.dsstore="find . -name '*.DS_Store' -type f -ls -delete"
+
+# recursively delete node_modules
+alias d.nodemodules="find . -name "node_modules" -exec rm -rf '{}' +"
